@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Search Template
  *
@@ -8,5 +9,16 @@
  */
 defined('ABSPATH') || exit;
 get_header();
-get_template_part('template-parts/single/search-template');
+?>
+
+<section id="search" class="section">
+    <div class="container">
+        <div id="search-wr">
+            <h1>Search</h1>
+        </div>
+    </div>
+</section>
+
+
+<?php
 get_footer();

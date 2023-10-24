@@ -16,10 +16,7 @@ defined('ABSPATH') || exit;
     <div class="container">
         <div id="query-wr">
             <?php
-
-
             if (is_category() || is_single()) {
-
                 //get current category id
                 $cat_id = get_queried_object_id();
                 $args = array(

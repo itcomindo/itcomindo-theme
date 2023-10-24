@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Archive.php
  *
@@ -9,5 +10,7 @@
 defined('ABSPATH') || exit;
 
 get_header();
-get_template_part('template-parts/archives/archives-template');
+get_template_part('inc/queries/global-queries');
+get_template_part('inc/ads/section-row-ads');
+get_template_part('inc/queries/rest-posts-queries');
 get_footer();

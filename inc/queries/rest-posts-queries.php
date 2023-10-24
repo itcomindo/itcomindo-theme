@@ -7,10 +7,7 @@
  * @author Budi Haryono <mail.budiharyono@gmail.com>
  * @since 019
  */
-
 defined('ABSPATH') || exit;
-
-
 ?>
 <div id="rq" class="section">
     <div class="container">
@@ -18,25 +15,60 @@ defined('ABSPATH') || exit;
             <div id="rq-left">
                 <div id="rq-item-wr">
                     <?php
-                    $args = array(
-                        'numberposts' => 7,
-                        'post_status' => 'publish',
-                    );
-
+                    if (is_category() || is_single()) {
+                        //get current category id
+                        $cat_id = get_queried_object_id();
+                        $args = array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 7,
+                            'cat' => $cat_id,
+                            'paged' => get_query_var('paged') ? get_query_var('paged') : 1
+                        );
+                    } elseif (is_tag()) {
+                        $tag_id = get_queried_object_id();
+                        $args = array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 7,
+                            'tag_id' => $tag_id,
+                            'paged' => get_query_var('paged') ? get_query_var('paged') : 1
+                        );
+                    } else {
+                        $args = array(
+                            'numberposts' => 7,
+                            'post_status' => 'publish',
+                        );
+                    }
                     $recent_posts = wp_get_recent_posts($args);
-
                     $exclude_ids = array();
-
                     foreach ($recent_posts as $post) {
                         $exclude_ids[] = $post['ID'];
                     }
-
-                    $query_args = array(
-                        'post_type' => 'post',
-                        'posts_per_page' => 10,
-                        'post__not_in' => $exclude_ids,
-                    );
-
+                    if (is_category() || is_single()) {
+                        //get current category id
+                        $cat_id = get_queried_object_id();
+                        $args = array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 7,
+                            'cat' => $cat_id,
+                            'post__not_in' => $exclude_ids,
+                            'paged' => get_query_var('paged') ? get_query_var('paged') : 1
+                        );
+                    } elseif (is_tag()) {
+                        $tag_id = get_queried_object_id();
+                        $args = array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 7,
+                            'tag_id' => $tag_id,
+                            'post__not_in' => $exclude_ids,
+                            'paged' => get_query_var('paged') ? get_query_var('paged') : 1
+                        );
+                    } else {
+                        $query_args = array(
+                            'post_type' => 'post',
+                            'posts_per_page' => 10,
+                            'post__not_in' => $exclude_ids,
+                        );
+                    }
                     $query = new WP_Query($query_args);
                     $count = 0;
                     if ($query->have_posts()) {
@@ -65,9 +97,7 @@ defined('ABSPATH') || exit;
                                     ?>
                                 </div>
                             <?php
-
                             } else {
-
                             ?>
                                 <div class="rq-item">
                                     <div class="rq-item-left">
@@ -91,9 +121,8 @@ defined('ABSPATH') || exit;
                         //reset post data
                         wp_reset_postdata();
                     } else {
-                        echo '<p>There are no posts</p>';
+                        echo '<p>tidak ada posts lagi</p>';
                     }
-
                     ?>
                 </div>
             </div>
