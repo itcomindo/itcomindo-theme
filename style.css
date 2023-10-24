@@ -3,7 +3,7 @@
 * Theme Name: Budi Haryono
 * Theme URI: https://budiharyono.com/
 * Description: Budi Haryono
-* Version: 1.0
+* Version: 1.0.0
 *=========================
 */
 /**
@@ -418,6 +418,78 @@ h2#header-logo {
   justify-content: center;
   align-items: center;
 }
+
+/**
+=========================
+* Ads
+* @todo ads
+*=========================
+*/
+
+/*=========================
+* ads Fixed Bottom
+* @todo fixed ads
+=========================*/
+#fba {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 888;
+  background-color: transparent;
+}
+#fba .container {
+  background-color: var(--transparent-light-6);
+  padding-top: 8px;
+  padding-bottom: 8px;
+  border-radius: 15px 15px 0 0;
+}
+#fba-wr {
+  max-width: 768px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#fba-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 80%;
+  line-height: 1.3;
+  padding: 6px 1rem;
+  top: -2rem;
+  right: 15px;
+  background-color: var(--color-dark-3);
+  color: var(--color-light-1);
+  cursor: pointer;
+}
+
+/**
+=========================
+* Section Row Ads
+* @todo section row ads
+*=========================
+*/
+
+#sra {
+  background-color: var(--color-light-1);
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+#sra-wr {
+  max-width: 768px;
+  min-height: 90px;
+  margin: 0 auto;
+}
+
+/*=========================
+* ads 768x90
+* @todo 768x90 ads
+=========================*/
+
 .ads-768x90 {
   width: 100%;
   height: 100%;
@@ -427,8 +499,15 @@ h2#header-logo {
   height: 100%;
   object-fit: cover;
 }
+
+/**
+=========================
+* 300x250 ads
+* @todo 300x250 ads
+*=========================
+*/
 .ads-300x250 {
-  min-height: 300px;
+  min-width: 300px;
   min-height: 250px;
   margin: 0 auto;
   position: absolute;
@@ -436,6 +515,18 @@ h2#header-logo {
   top: 2rem;
   transform: translateX(-50%);
 }
+
+/**
+=========================
+*ads 468x60
+* @todo 468x60 ads
+*=========================
+*/
+.ads-468x60 {
+  width: 468px;
+  min-height: 60px;
+}
+
 /**
 =========================
 * Horizontal Menu
@@ -554,6 +645,12 @@ ul#category-menu-item-wr li {
 .qpost-bot {
   padding: 2rem 1rem;
 }
+.qpost-item .the-date {
+  font-size: 80%;
+}
+.qpost-item.qnum-1 .qpost-bot .the-date {
+  color: var(--color-light-2);
+}
 
 /*=========================Query First Child=========================*/
 .qpost-item.qnum-1 {
@@ -620,6 +717,13 @@ ul#category-menu-item-wr li {
   align-items: stretch;
   gap: 1rem;
   border-bottom: 1px dashed var(--transparent-light-2);
+}
+
+.rq-item .the-date {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 80%;
 }
 
 .rq-item a {
@@ -747,6 +851,56 @@ a.rq-readmore {
 
 /**
 =========================
+* 991px
+* @todo media queries 991px
+*=========================
+*/
+@media screen and (max-width: 991px) {
+  .rq-item {
+    grid-template-columns: 231px 1fr;
+  }
+  .rq-head {
+    font-size: 0.98rem;
+    font-weight: 600;
+  }
+  .rq-excerpt {
+    display: none;
+  }
+}
+
+/**
+=========================
+* min 801px max 768px
+* @todo 801px - 768px
+*=========================
+*/
+@media (min-width: 768px) and (max-width: 801px) {
+  .rq-item {
+    grid-template-columns: 186px 1fr;
+  }
+}
+
+/**
+=========================
+* 767px
+* @todo 767px
+*=========================
+*/
+@media screen and (max-width: 767px) {
+  #rq-wr {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .rq-excerpt {
+    display: block;
+  }
+  #sra {
+    display: none !important;
+  }
+}
+
+/**
+=========================
 * 715px
 * @todo media queries 715px
 *=========================
@@ -772,6 +926,52 @@ a.rq-readmore {
 @media screen and (max-width: 600px) {
   .qpost-wr {
     gap: 1rem 0.5rem;
+  }
+}
+
+/**
+=========================
+* 530px
+* @todo media queries 530px
+*=========================
+*/
+
+@media screen and (max-width: 530px) {
+  #rq-item-wr {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: stretch;
+    justify-content: stretch;
+  }
+  .rq-item {
+    width: 100%;
+    grid-template-columns: unset;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 2rem;
+  }
+  .rq-readmore {
+    display: none;
+  }
+  .rq-item.iklan {
+    grid-column: 1 / span 2;
+  }
+}
+
+/**
+=========================
+*424px
+* @todo 424px
+*=========================
+*/
+@media screen and (max-width: 424px) {
+  .rq-excerpt {
+    display: none;
+  }
+  .rq-readmore {
+    display: block;
+    bottom: 1rem;
   }
 }
 

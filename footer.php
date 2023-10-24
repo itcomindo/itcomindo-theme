@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Footer
  *
@@ -8,7 +9,17 @@
  */
 defined('ABSPATH') || exit;
 
+
+// get_template_part('inc/ads/fixed-bottom-adsense');
+
+
+
 wp_footer();
+
+
+
+
+
 ?>
 </body>
 
